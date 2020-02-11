@@ -5,6 +5,9 @@ import os
 
 
 def init():
+    """Run the logic which will take a file & inject it with values of envvars used then create a
+    /tmp/injected_deployment.yaml that can be used by kubectl
+    """
     # read envvars
     print("reading envvars")
     parser = ParseIt(recurse=False, envvar_prefix="plugin_", config_type_priority=["env_vars"])

@@ -1,7 +1,6 @@
 from unittest import TestCase, mock
 from drone_kubernetes_apply.drone_kubernetes_apply_runner import *
 import os
-import requests_mock
 
 
 test_files_location = os.getenv("TEST_FILES_LOCATION", "test_files")
@@ -58,10 +57,14 @@ class BaseTests(TestCase):
 
     # TODO update test to make sure it creates the modified file
     def test_main_init(self):
-        test_envvars = {"PLUGIN_METRONOME_JOB_FILE": test_files_location + "/metronome.json"}
+        test_envvars = {
+            "PLUGIN_KUBERNETES_YAML_FILE": test_files_location + "/injected_deployment.yaml",
+            "PLUGIN_KUBERNETES_TOKEN": "abc123",
+            "PLUGIN_KUBERENTES_API_HOST": "my_test_kube.example.com"
+        }
         with mock.patch.dict(os.environ, test_envvars):
-            with requests_mock.Mocker() as request_mocker:
-                request_mocker.head('http://metronome.mesos:9000/v1/jobs/prod.example.app', status_code=200)
-                request_mocker.put('http://metronome.mesos:9000/v0/scheduled-jobs/prod.example.app', status_code=200,
-                                   text='{"test_json_key": "test_json_value"}')
-                init()
+            init()
+        f = open("/tmp/injected_deployment.yaml", "r")
+        reply = f.read()
+        f.close()
+        self.assertEqual(reply, "test: injected_deployment\n")
