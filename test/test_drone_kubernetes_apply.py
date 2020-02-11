@@ -55,10 +55,22 @@ class BaseTests(TestCase):
         reply = populate_template_string("this is a test", test_template_values_dict)
         self.assertEqual(reply, expected_reply)
 
-    # TODO update test to make sure it creates the modified file
     def test_main_init(self):
         test_envvars = {
             "PLUGIN_KUBERNETES_YAML_FILE": test_files_location + "/injected_deployment.yaml",
+            "PLUGIN_KUBERNETES_TOKEN": "abc123",
+            "PLUGIN_KUBERNETES_API_HOST": "my_test_kube.example.com"
+        }
+        with mock.patch.dict(os.environ, test_envvars):
+            init()
+        f = open("/tmp/injected_deployment.yaml", "r")
+        reply = f.read()
+        f.close()
+        self.assertEqual(reply, "test: abc123\n")
+
+    def test_main_init_reletive_path_to_kube_yaml_file(self):
+        test_envvars = {
+            "PLUGIN_KUBERNETES_YAML_FILE": "test_files/injected_deployment.yaml",
             "PLUGIN_KUBERNETES_TOKEN": "abc123",
             "PLUGIN_KUBERNETES_API_HOST": "my_test_kube.example.com"
         }

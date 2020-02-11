@@ -15,7 +15,8 @@ def init():
     parser.read_configuration_variable("kubernetes_api_host", required=True)
     kubernetes_file = parser.read_configuration_variable("kubernetes_yaml_file",
                                                          default_value="injected_deployment.yaml")
-    kubernetes_file = os.getcwd() + "/" + kubernetes_file
+    if kubernetes_file[0] != "/":
+        kubernetes_file = os.getcwd() + "/" + kubernetes_file
     envvar_dict = read_all_envvars_to_dict()
 
     # get the job json
