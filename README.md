@@ -24,7 +24,7 @@ steps:
   image: naorlivne/drone-kubernetes-apply
   settings:
     kubernetes_token: my...vary...long...kube...token
-    kuberentes_api_host: https://mykubecluster.example.com
+    kubernetes_api_host: https://mykubecluster.example.com
     kubernetes_yaml_file: injected_deployment.yaml
 ```
 
@@ -41,7 +41,7 @@ steps:
   image: naorlivne/drone-kubernetes-apply
   settings:
     kubernetes_token: my...vary...long...kube...token
-    kuberentes_api_host: https://mykubecluster.example.com
+    kubernetes_api_host: https://mykubecluster.example.com
     kubernetes_yaml_file: injected_deployment.yaml
     my_image_tag: my_dynamic_image
 ```
@@ -68,11 +68,11 @@ will result in:
 
 ## Parameter Reference
 
-#### kuberentes_api_host
+#### kubernetes_api_host
 
 The kubernetes API server URL (no trailing slash should be used)
 
-#### kuberentes_token
+#### kubernetes_token
 
 The token used to auth against the kubernetes API
 

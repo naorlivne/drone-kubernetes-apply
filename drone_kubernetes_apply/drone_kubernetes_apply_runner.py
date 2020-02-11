@@ -12,7 +12,7 @@ def init():
     print("reading envvars")
     parser = ParseIt(recurse=False, envvar_prefix="plugin_", config_type_priority=["env_vars"])
     parser.read_configuration_variable("kubernetes_token", required=True)
-    parser.read_configuration_variable("kuberentes_api_host", required=True)
+    parser.read_configuration_variable("kubernetes_api_host", required=True)
     kubernetes_file = parser.read_configuration_variable("kubernetes_yaml_file",
                                                          default_value="injected_deployment.yaml")
     kubernetes_file = os.getcwd() + "/" + kubernetes_file
