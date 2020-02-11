@@ -60,7 +60,7 @@ class BaseTests(TestCase):
         test_envvars = {
             "PLUGIN_KUBERNETES_YAML_FILE": test_files_location + "/injected_deployment.yaml",
             "PLUGIN_KUBERNETES_TOKEN": "abc123",
-            "PLUGIN_kubernetes_API_HOST": "my_test_kube.example.com"
+            "PLUGIN_KUBERNETES_API_HOST": "my_test_kube.example.com"
         }
         with mock.patch.dict(os.environ, test_envvars):
             init()
