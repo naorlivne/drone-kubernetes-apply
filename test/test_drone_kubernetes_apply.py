@@ -67,4 +67,4 @@ class BaseTests(TestCase):
         f = open("/tmp/injected_deployment.yaml", "r")
         reply = f.read()
         f.close()
-        self.assertEqual(reply, "test: injected_deployment\n")
+        self.assertEqual(reply, "test: abc123\n")
