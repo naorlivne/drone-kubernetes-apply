@@ -70,7 +70,7 @@ class BaseTests(TestCase):
 
     def test_main_init_reletive_path_to_kube_yaml_file(self):
         test_envvars = {
-            "PLUGIN_KUBERNETES_YAML_FILE": "test_files/injected_deployment.yaml",
+            "PLUGIN_KUBERNETES_YAML_FILE": os.getcwd() + "/" + test_files_location + "/injected_deployment.yaml",
             "PLUGIN_KUBERNETES_TOKEN": "abc123",
             "PLUGIN_KUBERNETES_API_HOST": "my_test_kube.example.com"
         }
