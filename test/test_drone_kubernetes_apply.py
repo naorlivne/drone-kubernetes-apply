@@ -9,6 +9,13 @@ test_files_location = os.getenv("TEST_FILES_LOCATION", "test_files")
 
 class BaseTests(TestCase):
 
+    def test_create_output_file(self):
+        create_output_file("it_writes!", "/tmp/test_output")
+        f = open("/tmp/test_output", "r")
+        reply = f.read()
+        f.close()
+        self.assertEqual(reply, "it_writes!")
+
     def test_file_reader_read_file(self):
         reply = read_file(test_files_location + "/test_read_file")
         self.assertEqual(reply, "it_reads!")

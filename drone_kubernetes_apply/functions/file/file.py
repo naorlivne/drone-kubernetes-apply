@@ -31,4 +31,15 @@ def populate_template_string(pre_template_string: str, template_values_dict: Opt
     post_template_string = Template(pre_template_string).safe_substitute(template_values_dict)
     return post_template_string
 
-# TODO - output to file function
+
+# output to file
+def create_output_file(input_string, output_file: str = "/tmp/injected_deployment.yaml"):
+    """write the contents of a given string to a file
+
+        Arguments:
+            input_string -- a string to write into the file
+            output_file -- path to the file to be written to, defaults to "/tmp/injected_deployment.yaml"
+    """
+    f = open(output_file, "w")
+    f.write(input_string)
+    f.close()

@@ -23,4 +23,5 @@ def init():
     print("populating kubernetes YAML file with the templated data")
     kubernetes_file_yaml = populate_template_string(kubernetes_file_yaml, envvar_dict)
 
-    # TODO - create the modified file
+    # create the populated file
+    create_output_file(kubernetes_file_yaml, "/tmp/injected_deployment.yaml")
