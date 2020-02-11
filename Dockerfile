@@ -18,4 +18,4 @@ RUN chmod +x /bin/kubectl
 WORKDIR /drone-kubernetes-apply
 
 # run the script that does the actual work when the container starts
-CMD ["sh", "/drone-kubernetes-apply/drone_kubernetes_apply_runner.sh"]
+CMD ["sh", "/drone-kubernetes-apply/drone_kubernetes_runner.sh"]
