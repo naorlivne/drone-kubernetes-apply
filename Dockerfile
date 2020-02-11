@@ -11,8 +11,8 @@ RUN pip install -r /drone-kubernetes-apply/requirements.txt
 ARG DRONE_STAGE_ARCH=amd64
 RUN apk add --no-cache curl
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/${DRONE_STAGE_ARCH}/kubectl
-RUN chmod +x ./kubectl
-RUN ./kubectl /bin/kubectl
+RUN mv ./kubectl /bin/kubectl
+RUN chmod +x /bin/kubectl
 
 # set the workdir to be the folder where all the data is so relative file names will work as expected
 WORKDIR /drone-kubernetes-apply
