@@ -7,10 +7,10 @@ COPY . /drone-kubernetes-apply
 # now we install all the python packages
 RUN pip install -r /drone-kubernetes-apply/requirements.txt
 
-# install kubectl, based on which ARCH is used with amd64 being the default if not otherwise stated as it's the most common one, can't use ADD as the internal logic also figures out the latest version of kubectl to use
-ARG ARCH=amd64
+# install kubectl, based on which DRONE_STAGE_ARCH is used with amd64 being the default if not otherwise stated as it's the most common one, can't use ADD as the internal logic also figures out the latest version of kubectl to use
+ARG DRONE_STAGE_ARCH=amd64
 RUN apk add --no-cache curl
-RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/${ARCH}/kubectl
+RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/${DRONE_STAGE_ARCH}/kubectl
 RUN chmod +x ./kubectl
 RUN ./kubectl /bin/kubectl
 
