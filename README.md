@@ -70,11 +70,11 @@ will result in:
 
 #### kubernetes_api_host
 
-The kubernetes API server URL (no trailing slash should be used)
+The kubernetes API server URL (no trailing slash should be used), alternately mount a kubeconfig into the container `/root/.kube/config`
 
 #### kubernetes_token
 
-The token used to auth against the kubernetes API
+The token used to auth against the kubernetes API, alternately mount a kubeconfig into the container `/root/.kube/config`
 
 #### kubernetes_yaml_file
 
