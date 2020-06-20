@@ -11,8 +11,8 @@ def init():
     # read envvars
     print("reading envvars")
     parser = ParseIt(recurse=False, envvar_prefix="plugin_", config_type_priority=["env_vars"])
-    parser.read_configuration_variable("kubernetes_token", required=True)
-    parser.read_configuration_variable("kubernetes_api_host", required=True)
+    parser.read_configuration_variable("kubernetes_token", required=False)
+    parser.read_configuration_variable("kubernetes_api_host", required=False)
     kubernetes_file = parser.read_configuration_variable("kubernetes_yaml_file",
                                                          default_value="injected_deployment.yaml")
     if kubernetes_file[0] != "/":
