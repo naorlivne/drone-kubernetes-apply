@@ -27,4 +27,4 @@ K8S_TOKEN="${K8S_TOKEN#\'}"
 fi
 
 # run kubectl apply on the variable injected yaml config file
-kubectl --insecure-skip-tls-verify "${K8S_API_HOST}" "${K8S_TOKEN}" apply -f /tmp/injected_deployment.yaml
+kubectl --insecure-skip-tls-verify ${K8S_API_HOST} ${K8S_TOKEN} apply -f /tmp/injected_deployment.yaml
