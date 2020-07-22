@@ -1,5 +1,5 @@
 # it's official and small so i'm using it
-FROM python:3.8.4-alpine3.11
+FROM python:3.8.5-alpine3.11
 
 # first we need to copy everything
 COPY . /drone-kubernetes-apply
