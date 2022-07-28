@@ -5,7 +5,7 @@ set -e
 set -x
 
 # create the variable injected yaml config file
-python drone_kubernetes_runner.py
+python /drone-kubernetes-apply/drone_kubernetes_runner.py
 
 
 if [ -z "${PLUGIN_KUBERNETES_API_HOST}" ]
